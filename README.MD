@@ -35,6 +35,11 @@
 
 Ejecutar en powershell el archivo **`preparar-contenedores.ps1`** que se encuentra en la ruta raíz del proyecto.
 
+## Integrantes del Proyecto:
+- Acis Avendaño Sánchez
+- Kevin David Olmos Rodriguez
+- Carlos Daniel Lara Gutiérrez
+- Francisco Javier Mendez Rincon
 
 
 <!-- **************************************************************** -->
