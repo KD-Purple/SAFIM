@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SAFIM.Models.Asesoria>
+@{
+    ViewBag.Title = "Registro de Asesorías";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Asesorías</h4>
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-success" href="@Url.Action("RegistroAsesoria", "Asesoria")">
+                    <i class="bi bi-plus-circle"></i> Asignar asesoría
+                </a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">ID</th>
+                                <th style="text-align: center;">Clave de Materia</th>
+                                <th style="text-align: center;">Nombre de Materia</th>
+                                <th style="text-align: center;">Asesor</th>
+                                <th style="text-align: center;">Lunes</th>
+                                <th style="text-align: center;">Martes</th>
+                                <th style="text-align: center;">Miércoles</th>
+                                <th style="text-align: center;">Jueves</th>
+                                <th style="text-align: center;">Viernes</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var asesoria in Model)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">@asesoria.IdAsesoria</td>
+                                    <td style="text-align: center;">@asesoria.ClaveMateria</td>
+                                    <td style="text-align: center;">@asesoria.ClaveMateriaNavigation.NombreMateria</td>
+                                    <td style="text-align: center;">
+                                        @asesoria.MatriculaAsesorNavigation.MatriculaNavigation.NombreAlumno
+                                        @asesoria.MatriculaAsesorNavigation.MatriculaNavigation.ApellidoP
+                                        @asesoria.MatriculaAsesorNavigation.MatriculaNavigation.ApellidoM
+                                    </td>
+                                    <td style="text-align: center;">@(String.IsNullOrEmpty(asesoria.HorarioLunes) ? "--" : asesoria.HorarioLunes)</td>
+                                    <td style="text-align: center;">@(String.IsNullOrEmpty(asesoria.HorarioMartes) ? "--" : asesoria.HorarioMartes)</td>
+                                    <td style="text-align: center;">@(String.IsNullOrEmpty(asesoria.HorarioMiercoles) ? "--" : asesoria.HorarioMiercoles)</td>
+                                    <td style="text-align: center;">@(String.IsNullOrEmpty(asesoria.HorarioJueves) ? "--" : asesoria.HorarioJueves)</td>
+                                    <td style="text-align: center;">@(String.IsNullOrEmpty(asesoria.HorarioViernes) ? "--" : asesoria.HorarioViernes)</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("ModificarAsesoria", "Asesoria", new { idAsesoria = asesoria.IdAsesoria })">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("BorrarAsesoria", "Asesoria", new { idAsesoria = asesoria.IdAsesoria })">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

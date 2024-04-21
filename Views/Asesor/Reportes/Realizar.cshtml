@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Registro de Reportes";
+    Layout = "~/Views/Shared/_PlantillaAsesor.cshtml";
+}
+
+@section Scripts{
+    <script src="~/js/ReporteFunciones.js"></script>
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Reporte</h4>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Action("NuevoReporte","Reporte")" method="POST">
+                    <div id="reporteContainer">
+                        <div class="row reporteRow">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Matrícula</label>
+                                    <input type="text" class="form-control matricula" name="matricula" placeholder="matricula del alumno" id="matricula" required autocomplete="on" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Minutos de Atención</label>
+                                    <select id="tiempo" name="tiempo" class="form-control">
+                                        <option value="tiempo1" selected>10 - 30 min</option>
+                                        <option value="tiempo2">30 - 45 min</option>
+                                        <option value="tiempo3">45 - 60 min</option>
+                                        <option value="tiempo4">+ 60 min</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Programa Educativo</label>
+                                    <br />
+                                    <input type="text" class="form-control" name="carrera" id="carrera" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Grupo</label>
+                                    <input type="number" class="form-control" name="grupo" id="grupo" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Temas</label>
+                                    <textarea type="text" class="form-control" name="temas" id="temas" rows="2" cols="50" required> </textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Comentarios</label>
+                                    <textarea type="text" class="form-control" name="comentario" id="comentario" rows="2" cols="50"> </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <button type="button" class="btn btn-warning" id="agregar">+</button> <button type="button" class="btn btn-warning" id="remover">-</button>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="idReporte" value="@ViewBag.IdReporte" method="POST">Registrar</button>
+                    <a class="btn btn-warning" href="@Url.Action("ReportesAsesor","Reporte")">Volver</a>
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>

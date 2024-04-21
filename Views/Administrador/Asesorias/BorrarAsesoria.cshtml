@@ -1,0 +1,120 @@
+﻿@model SAFIM.Models.Asesoria
+@{
+    ViewBag.Title = "Borrar Asesoría";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Eliminar Asesoría</h4>
+            </div>
+            <div class="panel-body">
+                
+                <div class="alert alert-danger">
+                    ¿Desea eliminar esta asesoría?
+                    
+                </div>
+                    <div class="form-group">
+                        <label>Clave de Materia</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.ClaveMateria)
+                    </div>
+                    <div class="form-group">
+                        <label>Asesoría</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.ClaveMateriaNavigation.NombreMateria)
+                    </div>
+                    <div class="form-group">
+                        <label>Matrícula del Asesor</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaAsesor)
+                    </div>
+                    <div class="form-group">
+                        <label>Asesor</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaAsesorNavigation.MatriculaNavigation.NombreAlumno) @Html.DisplayTextFor(m => m.MatriculaAsesorNavigation.MatriculaNavigation.ApellidoP) @Html.DisplayTextFor(m => m.MatriculaAsesorNavigation.MatriculaNavigation.ApellidoM)
+                    </div>
+                    <div class="form-group">
+                        <label>Lunes</label>
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora de Inicio</label>
+                                <input type="time" class="form-control" name="lunesinicio" value="@Model.HorarioLunes?.Split(" a ")[0]" readonly />
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora Fin</label>
+                                <input type="time" class="form-control" name="lunesfin" value="@Model.HorarioLunes?.Split(" a ")[1]" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Martes</label>
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora de Inicio</label>
+                                <input type="time" class="form-control" name="martesinicio" value="@Model.HorarioMartes?.Split(" a ")[0]" readonly />
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora Fin</label>
+                                <input type="time" class="form-control" name="martesfin" value="@Model.HorarioMartes?.Split(" a ")[1]" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Miércoles</label>
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora de Inicio</label>
+                                <input type="time" class="form-control" name="miercolesinicio" value="@Model.HorarioMiercoles?.Split(" a ")[0]" readonly />
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora Fin</label>
+                                <input type="time" class="form-control" name="miercolesfin" value="@Model.HorarioMiercoles?.Split(" a ")[1]" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Jueves</label>
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora de Inicio</label>
+                                <input type="time" class="form-control" name="juevesinicio" value="@Model.HorarioJueves?.Split(" a ")[0]" readonly />
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora Fin</label>
+                                <input type="time" class="form-control" name="juevesfin" value="@Model.HorarioJueves?.Split(" a ")[1]" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Viernes</label>
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora de Inicio</label>
+                                <input type="time" class="form-control" name="viernesinicio" value="@Model.HorarioViernes?.Split(" a ")[0]" readonly />
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-4">
+                                <label>Hora Fin</label>
+                                <input type="time" class="form-control" name="viernesfin" value="@Model.HorarioViernes?.Split(" a ")[1]" readonly/>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <br />
+                <form action="@Url.Action("Borrar","Asesoria")" method="POST">
+                    <button type="submit" class="btn btn-danger" name="idAsesoria" value="@Model.IdAsesoria">Eliminar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Asesorias","Administrador")">Volver</a>
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

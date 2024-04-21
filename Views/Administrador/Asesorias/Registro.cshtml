@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Registro de una Asesoría";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+@section Scripts{
+    <script src="~/js/AutocompletadoMateria.js"></script>
+    <script src="~/js/AutocompletadoAsesor.js"></script>
+    <script src="~/js/AsesoriaFunciones.js"></script>
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Nueva Asesoría</h4>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Action("NuevaAsesoria", "Asesoria")" method="POST">
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="clavemateria">Clave de Materia</label>
+                                <input type="text" class="form-control" id="clavemateria" name="clavemateria" required />
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombremateria">Nombre de Materia</label>
+                                <input type="text" class="form-control" id="nombremateria" name="nombremateria" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matricula">Matrícula</label>
+                        <input type="number" class="form-control" id="matricula" name="matricula" required />
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Día</th>
+                                    <th>Hora de Inicio</th>
+                                    <th>Hora Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="lunes">
+                                    <td>Lunes</td>
+                                    <td>
+                                        <input type="time" class="form-control" name="lunesinicio" id="inicio" />
+                                    </td>
+                                    <td>
+                                        <input type="time" class="form-control" name="lunesfin" id="fin" />
+                                    </td>
+                                </tr>
+                                <tr id="martes">
+                                    <td>Martes</td>
+                                    <td>
+                                        <input type="time" class="form-control" name="martesinicio" id="inicio" />
+                                    </td>
+                                    <td>
+                                        <input type="time" class="form-control" name="martesfin" id="fin" />
+                                    </td>
+                                </tr>
+                                <tr id="miercoles">
+                                    <td>Miércoles</td>
+                                    <td>
+                                        <input type="time" class="form-control" name="miercolesinicio" id="inicio" />
+                                    </td>
+                                    <td>
+                                        <input type="time" class="form-control" name="miercolesfin" id="fin" />
+                                    </td>
+                                </tr>
+                                <tr id="jueves">
+                                    <td>Jueves</td>
+                                    <td>
+                                        <input type="time" class="form-control" name="juevesinicio" id="inicio" />
+                                    </td>
+                                    <td>
+                                        <input type="time" class="form-control" name="juevesfin" id="fin" />
+                                    </td>
+                                </tr>
+                                <tr id="viernes">
+                                    <td>Viernes</td>
+                                    <td>
+                                        <input type="time" class="form-control" name="viernesinicio" id="inicio" />
+                                    </td>
+                                    <td>
+                                        <input type="time" class="form-control" name="viernesfin" id="fin" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Asesorias", "Asesoria")">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

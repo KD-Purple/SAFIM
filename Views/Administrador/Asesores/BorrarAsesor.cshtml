@@ -1,0 +1,59 @@
+﻿@model SAFIM.Models.Asesor
+@{
+    ViewBag.Title = "Borrar Asesor";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Eliminar Asesor</h4>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-danger">
+                    ¿Desea eliminar a este asesor?
+
+                </div>
+                <form action="@Url.Action("BorrarAsesor","Asesor")" method="POST">
+                    <div class="form-group  col-sm-6">
+                        <label>Matrícula</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.Matricula)
+                    </div>
+                    <div class="form-group  col-sm-6">
+                        <label>Correo</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaNavigation.Correo)
+                    </div>
+                    <div class="form-group  col-sm-6">
+                        <label>Asesor</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaNavigation.NombreAlumno) @Html.DisplayTextFor(m => m.MatriculaNavigation.ApellidoP) @Html.DisplayTextFor(m => m.MatriculaNavigation.ApellidoM)
+                    </div>
+                    <div class="form-group  col-sm-6">
+                        <label>Carrera</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaNavigation.Carrera)
+                    </div>
+                    <div class="form-group  col-sm-6">
+                        <label>Semestre</label>
+                        <br />
+                        @Html.DisplayTextFor(m => m.MatriculaNavigation.Semestre)
+                    </div>
+
+                    <br />
+
+                    <div class="form-group  col-sm-12">
+                        <button type="submit" class="btn btn-danger" name="matricula" value="@Model.Matricula">Eliminar</button>
+                        <a class="btn btn-warning" href="@Url.Action("Asesores","Administrador")">Volver</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

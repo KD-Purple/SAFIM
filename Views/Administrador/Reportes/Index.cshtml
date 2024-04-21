@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SAFIM.Models.Reporte>
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>
+                    Reportes
+                </h4>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Reportes" method="GET">
+                    <div class="form-actions no-color">
+                        <p>
+                            Buscar: <input type="text" name="buscar" value="@ViewData["Buscador"]" />
+                            <input type="submit" value="Buscar" class="btn btn-default" /> |
+                            <a asp-action="Reportes">Limpiar Búsqueda</a>
+
+                            <label for="nombre">
+                                <input type="radio" name="tipo" value="nombre" id="nombre" checked /> Nombre
+                            </label for="">
+                            <label for="fecha">
+                                <input type="radio" name="tipo" value="fecha" id="fecha" /> Fecha
+                            </label>
+                        </p>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive" id="resultado">
+                    <table class="table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">
+                                    <a asp-action="Reportes" asp-route-ordenar="@ViewData["OrdenIdAsesoria"]">ID Asesoría</a>
+                                </th>
+                                <th style="text-align:center">
+                                    <a asp-action="Reportes" asp-route-ordenar="@ViewData["OrdenNombre"]">Asesor</a>
+                                </th>
+                                <th style="text-align:center">Clave de Materia</th>
+                                <th style="text-align:center">Nombre de materia</th>
+                                <th style="text-align:center">
+                                    <a asp-action="Reportes" asp-route-ordenar="@ViewData["OrdenFecha"]">Fecha Impartida</a>
+                                </th>
+                                <th style="text-align:center">Turno</th>
+                                <th style="text-align:center">Realizada</th>
+                                <th width="150px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reportes in Model)
+                            {
+                                <tr>
+                                    <td width="100" style="text-align:center">@reportes.IdAsesoria</td>
+                                    <td width="100" style="text-align:center">@reportes.MatriculaAsesorNavigation.NombreAlumno @reportes.MatriculaAsesorNavigation.ApellidoP  @reportes.MatriculaAsesorNavigation.ApellidoM</td>
+                                    <td width="200" style="text-align:center">@reportes.ClaveMateria</td>
+                                    <td width="200" style="text-align:center">@reportes.ClaveMateriaNavigation.NombreMateria</td>
+                                    <td width="200" style="text-align:center">@reportes.Fecha.Date.ToString("dd/MM/yyyy")</td>
+                                    @if (TimeSpan.Compare(TimeSpan.ParseExact(reportes.Horario, "g", System.Globalization.CultureInfo.InvariantCulture), new TimeSpan(0, 0, 0)) > 0 &&
+                                   TimeSpan.Compare(TimeSpan.ParseExact(reportes.Horario, "g", System.Globalization.CultureInfo.InvariantCulture), new TimeSpan(11, 59, 59)) < 0)
+                                    {
+                                        <td width="200" style="text-align:center">Matutino</td>
+                                    }
+                                    else if (TimeSpan.Compare(TimeSpan.ParseExact(reportes.Horario, "g", System.Globalization.CultureInfo.InvariantCulture), new TimeSpan(12, 0, 0)) > 0 &&
+                                    TimeSpan.Compare(TimeSpan.ParseExact(reportes.Horario, "g", System.Globalization.CultureInfo.InvariantCulture), new TimeSpan(22, 59, 59)) < 0)
+                                    {
+                                        <td width="200" style="text-align:center">Vespertino</td>
+                                    }
+
+                                    <td width="200" style="text-align:center">
+                                        @if (reportes.Detallereporte.Count() == 0)
+                                        {
+                                            <input type="checkbox" readonly unchecked onclick="return false;" />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" readonly checked onclick="return false;" />
+                                        }
+                                    </td>
+                                    <td width="200">
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

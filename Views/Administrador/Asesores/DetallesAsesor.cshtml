@@ -1,0 +1,57 @@
+﻿@model SAFIM.Models.Asesor
+@{
+    ViewBag.Title = "Detalles del Asesor";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Detalles del Asesor</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group col-sm-6">
+                    <label>Matrícula</label>
+                    <br />
+                    @Html.DisplayTextFor(m => m.Matricula)
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Correo</label>
+                    <br />
+                    @Html.DisplayTextFor(m => m.MatriculaNavigation.Correo)
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Asesor</label>
+                    <br />
+                    @Html.DisplayTextFor(m => m.MatriculaNavigation.NombreAlumno) @Html.DisplayTextFor(m => m.MatriculaNavigation.ApellidoP) @Html.DisplayTextFor(m => m.MatriculaNavigation.ApellidoM)
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Carrera</label>
+                    <br />
+                    @Html.DisplayTextFor(m => m.MatriculaNavigation.Carrera)
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Semestre</label>
+                    <br />
+                    @Html.DisplayTextFor(m => m.MatriculaNavigation.Semestre)
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>No. de Asesorías Asignadas:</label>
+                    <br />
+                    @ViewBag.numAsesorias
+                </div>
+
+                <br />
+                <div class="form-group  col-sm-12">
+                    <input type="hidden" class="form-control" name="IdAsesoria" />
+                    <a class="btn btn-warning" href="@Url.Action("Asesores","Administrador")">Volver</a>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

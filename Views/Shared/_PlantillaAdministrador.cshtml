@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery-ui.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script src="~/js/site.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/jquery/dist/jquery-ui.css" />
+    <link rel="stylesheet" href="~/lib/jquery/dist/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #006400">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Sistema de Asesorías UABC FIM", "Index", "Administrador", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!-- ActionLink ("Texto que aparece para el usuario", "Clase a la que accede del controlador","Controlador al que accede")-->
+                    <li>@Html.ActionLink("Home", "Index", "Administrador")</li>
+                    <li>@Html.ActionLink("Asesores", "Asesores", "Asesor")</li>
+                    <li>@Html.ActionLink("Asesorías", "Asesorias", "Asesoria")</li>
+                    <li>@Html.ActionLink("Reportes", "Reportes", "Reporte")</li>
+                    <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Acceso")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Universidad Autónoma de Baja California</p>
+        </footer>
+    </div>
+</body>
+</html>

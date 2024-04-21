@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Registro de un Asesor";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+@section Scripts{
+    <script src="~/js/AutocompletadoAlumno.js"></script>
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Nuevo Asesor</h4>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Action("NuevoAsesor","Asesor")" method="POST">
+                    <div class="form-group col-sm-12">
+                        <label>Matrícula</label>
+                        <input type="text" class="form-control" name="matricula" placeholder="matricula del alumno" id="matricula" />
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-sm-6">
+                            <label class="">Nombre Completo: <span id="nombre"></span></label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Correo: <span id="correo"></span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group col-sm-6">
+                            <label>Carrera: <span id="carrera"></span></label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Semestre: <span id="semestre"></span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <button type="submit" class="btn btn-primary" method="POST">Registrar</button>
+                        <a class="btn btn-warning" href="@Url.Action("Asesores","Asesor")">Volver</a>
+                    </div>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-warning col-sm-6" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

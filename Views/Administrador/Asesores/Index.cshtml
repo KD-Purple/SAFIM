@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SAFIM.Models.Asesor>
+@{
+    ViewBag.Title = "Registro de Asesores";
+    Layout = "~/Views/Shared/_PlantillaAdministrador.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>
+                    Asesores
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div style="display: flex;flex-wrap: nowrap;">
+                    <form asp-action="Asesores" method="GET">
+                        <div class="form-actions no-color">
+                            Buscar: <input type="text" name="buscar" value="@ViewData["Buscador"]" />
+                            <input type="submit" value="Buscar" class="btn btn-default" /> |
+                            <a asp-action="Asesores">Limpiar Búsqueda</a>
+
+
+
+                            <label for="matricula">
+                                @Html.RadioButton("tipo","matricula",new{ @checked="checked"}) Matrícula
+                            </label>
+                            <label for="nombre">
+                                @Html.RadioButton("tipo","nombre",new{ }) Nombre
+                            </label>
+                        </div>
+                    </form>
+                    <a class="btn btn-success" style="margin-left:auto" href="@Url.Action("RegistroAsesor", "Asesor")">
+                        <i class="bi bi-plus-circle"></i> Agregar asesor
+                    </a>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table-striped" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Matrícula</th>
+                                <th style="text-align:center">Asesor</th>
+                                <th style="text-align:center">Carrera</th>
+                                <th style="text-align:center">Semestre</th>
+                                <th width="100px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var asesor in Model)
+                            {
+                                <tr>
+
+                                    <td width="50" style="text-align:center">@asesor.Matricula</td>
+                                    <td width="250" style="text-align:center">@asesor.MatriculaNavigation.NombreAlumno @asesor.MatriculaNavigation.ApellidoP @asesor.MatriculaNavigation.ApellidoM</td>
+                                    <td width="320" style="text-align:center">@asesor.MatriculaNavigation.Carrera</td>
+                                    <td width="70" style="text-align:center">@asesor.MatriculaNavigation.Semestre</td>
+                                    <td width="50" style="text-align:center">
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("DetallesAsesor", "Asesor", new { matricula=asesor.Matricula})">
+                                            <i class="bi bi-search"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("ConfirmarBorrarAsesor", "Asesor", new { matricula=asesor.Matricula})">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

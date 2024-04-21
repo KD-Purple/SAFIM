@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  netsdk: 
+    build:
+      context: .
+    ports:
+      - "5001:80"
+    container_name: 'SAFIM'
+    depends_on:
+      - sql_2019
+
+  sql_2019:
+    container_name: 'MSSQLS_2019'
+    build:
+      context: ./BDDesarrollo
+    ports:
+      - "1433:1433"
+    volumes:
+    - SQLS2019:/var/opt/mssql
+    - "C:/Users/acisa/Documents/Proyectos/SAFIM/BDDesarrollo/Respaldos:/var/opt/mssql/backup"
+    # EJEMPLO: "C:/Users/Jorge/Documentos/SAFIM/BDDesarrollo/Respaldos:/var/opt/mssql/backup"
+
+volumes:
+  SQLS2019: 
+    external: true

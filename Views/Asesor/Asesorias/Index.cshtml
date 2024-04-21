@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SAFIM.Models.Asesoria>
+
+@{
+    ViewBag.Title = "Mis Asesorías";
+    Layout = "~/Views/Shared/_PlantillaAsesor.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>
+                    Mis Asesorías
+                </h4>
+            </div>
+            <div class="panel-body">
+                <hr />
+                <div class="table-responsive">
+                    <table class="table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">ID </th>
+                                <th style="text-align:center">Clave de Materia </th>
+                                <th style="text-align:center">Nombre de materia </th>
+                                <th style="text-align:center">Lunes </th>
+                                <th style="text-align:center">Martes </th>
+                                <th style="text-align:center">Miércoles </th>
+                                <th style="text-align:center">Jueves </th>
+                                <th style="text-align:center">Viernes </th>
+                                <th width="150px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var asesorias in Model)
+                            {
+                                <tr>
+                                    <td width="100" style="text-align:center">@asesorias.IdAsesoria</td>
+                                    <td width="150" style="text-align:center">@asesorias.ClaveMateria</td>
+                                    <td width="200" style="text-align:center">@asesorias.ClaveMateriaNavigation.NombreMateria</td>
+                                    @if (!String.IsNullOrEmpty(asesorias.HorarioLunes))
+                                    {
+                                        <td width="200" style="text-align:center"> @asesorias.HorarioLunes</td>
+                                    }
+                                    else
+                                    {
+                                        <th width="70px" style="text-align:center">NA</th>
+                                    }
+                                    @if (!String.IsNullOrEmpty(asesorias.HorarioMartes))
+                                    {
+                                        <td width="200" style="text-align:center">@asesorias.HorarioMartes</td>
+                                    }
+                                    else
+                                    {
+                                        <th width="70px" style="text-align:center">NA</th>
+                                    }
+                                    @if (!String.IsNullOrEmpty(asesorias.HorarioMiercoles))
+                                    {
+                                        <td width="200" style="text-align:center">@asesorias.HorarioMiercoles</td>
+                                    }
+                                    else
+                                    {
+                                        <th width="70px" style="text-align:center">NA</th>
+                                    }
+                                    @if (!String.IsNullOrEmpty(asesorias.HorarioJueves))
+                                    {
+                                        <td width="200" style="text-align:center">@asesorias.HorarioJueves</td>
+                                    }
+                                    else
+                                    {
+                                        <th width="70px" style="text-align:center">NA</th>
+                                    }
+                                    @if (!String.IsNullOrEmpty(asesorias.HorarioViernes))
+                                    {
+                                        <td width="200" style="text-align:center">@asesorias.HorarioViernes</td>
+                                    }
+                                    else
+                                    {
+                                        <th width="70px" style="text-align:center">NA</th>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
